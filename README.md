@@ -23,5 +23,6 @@ Clone este repositório:
 
 ```bash
 git clone https://github.com/migu3lls/yt_downloader.git
-cd youtube-downloader
+cd yt_downloader
+
 
