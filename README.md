@@ -22,5 +22,6 @@ Este é um script em **Python 3** que baixa vídeos do **YouTube** em formato **
 Clone este repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/youtube-downloader.git
+git clone https://github.com/migu3lls/yt_downloader.git
 cd youtube-downloader
+
