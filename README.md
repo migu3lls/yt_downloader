@@ -24,5 +24,19 @@ Clone este repositório:
 ```bash
 git clone https://github.com/migu3lls/yt_downloader.git
 cd yt_downloader
+```
+---
 
+▶️ Uso
 
+🎧 Baixar como MP3 (áudio)
+```bash
+python yt_downloader.py "URL_DO_VIDEO" --formato mp3 --saida downloads/
+python yt_downloader.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ" -f mp3 -o musica/
+```
+
+🎬 Baixar como MP4 (vídeo)
+```bash
+python yt_downloader.py "URL_DO_VIDEO" --formato mp4 --saida downloads/
+python yt_downloader.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ" -f mp4 -o videos/
+```
