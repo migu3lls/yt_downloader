@@ -11,6 +11,8 @@ PASSO A PASSO (YouTube -> MP3/MP4 com Python)
    - Linux (Debian/Ubuntu): sudo apt update && sudo apt install -y ffmpeg
    Verifique: ffmpeg -version
 
+   - pip install tqdm
+
 3) Instale as dependências do projeto:
    - (Opcional) Crie e ative um ambiente virtual:
        python -m venv .venv
@@ -22,7 +24,7 @@ PASSO A PASSO (YouTube -> MP3/MP4 com Python)
 4) Execute o script:
    - Para MP3 (áudio):
        python yt_downloader.py "URL_DO_VIDEO" --formato mp3 --saida saida/
-       # exemplo: python yt_downloader.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ" -f mp3 -o baixados
+       # exemplo: python yt_downloader.py "https://www.youtube.com/watch?v=lDK9QqIzhwk&list=PLVQ7g3e6O27cH8KG9mktLWH8zcqiwTntP&ab_channel=BonJoviVEVO" -f mp3 -o musics
    - Para MP4 (vídeo):
        python yt_downloader.py "URL_DO_VIDEO" --formato mp4 --saida saida/
 
