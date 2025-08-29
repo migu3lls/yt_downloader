@@ -1,15 +1,3 @@
-#!/usr/bin/env python3
-"""
-yt_downloader.py (versão robusta)
----------------------------------
-Baixa vídeos/áudios do YouTube e gera MP3 ou MP4 usando yt-dlp + FFmpeg,
-com tolerância a falhas, log de erros e barra de progresso geral.
-
-Uso:
-  python yt_downloader.py <URL> --formato mp3
-  python yt_downloader.py <URL> --formato mp4 --saida downloads/
-"""
-
 import argparse
 import sys
 from pathlib import Path
@@ -45,7 +33,7 @@ def make_opts(formato: str, saida: Path, bitrate: str):
         "concurrent_fragment_downloads": 4,
         "noprogress": False,
         "noplaylist": False,
-        "ignoreerrors": True,  # 👈 adiciona isso
+        "ignoreerrors": True,  
     }       
 
     if formato == "mp3":
