@@ -28,7 +28,7 @@ Siga este passo a passo para configurar o ambiente e executar o script.
 
 Clone este repositório para o seu computador usando o comando:
 ```bash
-git clone [https://github.com/migu3lls/yt_downloader.git](https://github.com/migu3lls/yt_downloader.git)
+git clone https://github.com/migu3lls/yt_downloader.git
 cd yt_downloader
 ```
 
@@ -128,3 +128,4 @@ Dica: Você pode mudar o bitrate do MP3 com --bitrate 320. O script também func
 ⚖️ Aviso Legal
 
 Baixe/converta apenas conteúdos para os quais você possui direitos ou permissão para tal. Respeite os Termos de Serviço do YouTube e as leis de direitos autorais aplicáveis.
+
