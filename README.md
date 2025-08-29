@@ -5,7 +5,9 @@ Este é um script em **Python 3** que baixa vídeos e playlists do **YouTube** e
 ✅ Suporta **vídeos e playlists** </br>
 ✅ Permite escolher **MP3 (bitrate configurável)** ou **MP4** </br>
 ✅ Mostra o progresso do download em tempo real  </br>
-✅ Fácil de usar via **linha de comando** ---
+✅ Fácil de usar via **linha de comando** 
+
+---
 
 ## ⚙️ Requisitos
 
@@ -128,5 +130,6 @@ Dica: Você pode mudar o bitrate do MP3 com --bitrate 320. O script também func
 ⚖️ Aviso Legal
 
 Baixe/converta apenas conteúdos para os quais você possui direitos ou permissão para tal. Respeite os Termos de Serviço do YouTube e as leis de direitos autorais aplicáveis.
+
 
 
