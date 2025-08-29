@@ -100,7 +100,7 @@ python yt_downloader.py "URL_DO_VIDEO" --formato mp3 --saida nome_da_pasta
 
 Exemplo:
 ```bash 
-python yt_downloader.py "[https://www.youtube.com/watch?v=lDK9QqIzhwk&list=PLVQ7g3e6O27cH8KG9mktLWH8zcqiwTntP&ab_channel=BonJoviVEVO](https://www.youtube.com/watch?v=lDK9QqIzhwk&list=PLVQ7g3e6O27cH8KG9mktLWH8zcqiwTntP&ab_channel=BonJoviVEVO)" -f mp3 -o musics
+python yt_downloader.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" -f mp3 -o musics
 ``` 
 
 
@@ -112,7 +112,7 @@ python yt_downloader.py "URL_DO_VIDEO" --formato mp4 --saida nome_da_pasta
 
 Exemplo:
 ```bash 
-python yt_downloader.py "[https://www.youtube.com/watch?v=lDK9QqIzhwk&list=PLVQ7g3e6O27cH8KG9mktLWH8zcqiwTntP&ab_channel=BonJoviVEVO](https://www.youtube.com/watch?v=lDK9QqIzhwk&list=PLVQ7g3e6O27cH8KG9mktLWH8zcqiwTntP&ab_channel=BonJoviVEVO)" -f mp4 -o videos
+python yt_downloader.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" -f mp4 -o videos
 ``` 
 
 Dica: Você pode mudar o bitrate do MP3 com --bitrate 320. O script também funciona com URLs de playlists.
@@ -128,4 +128,5 @@ Dica: Você pode mudar o bitrate do MP3 com --bitrate 320. O script também func
 ⚖️ Aviso Legal
 
 Baixe/converta apenas conteúdos para os quais você possui direitos ou permissão para tal. Respeite os Termos de Serviço do YouTube e as leis de direitos autorais aplicáveis.
+
 
