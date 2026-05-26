@@ -36,6 +36,21 @@ def _build_video_format_selector(video_quality: str) -> str:
     )
 
 
+def _get_ffmpeg_path() -> Optional[str]:
+    """Find FFmpeg in common WinGet locations on Windows if not in PATH."""
+    import os
+    local_appdata = os.environ.get("LOCALAPPDATA")
+    if local_appdata:
+        winget_packages = Path(local_appdata) / "Microsoft" / "WinGet" / "Packages"
+        if winget_packages.exists():
+            for p in winget_packages.iterdir():
+                if p.name.lower().startswith("gyan.ffmpeg"):
+                    for sub in p.glob("**/bin"):
+                        if (sub / "ffmpeg.exe").exists():
+                            return str(sub)
+    return None
+
+
 def download_youtube(
     url: str,
     format_choice: str,
@@ -102,7 +117,18 @@ def download_youtube(
         "quiet": True,
         "noprogress": True,
         "progress_hooks": [progress_hook],
+        "js_runtimes": {
+            "deno": {},
+            "node": {},
+            "bun": {},
+            "quickjs": {},
+        },
     }
+
+    ffmpeg_path = _get_ffmpeg_path()
+    if ffmpeg_path:
+        ydl_opts["ffmpeg_location"] = ffmpeg_path
+
 
     if format_choice == "mp3":
         ydl_opts.update(
