@@ -25,10 +25,19 @@ export function validateYouTubeUrl(rawInput: string): ValidatedYouTubeUrl {
     return { isValid: false, error: "Informe um link do YouTube válido." };
   }
 
-  const trimmed = rawInput.trim();
+  let trimmed = rawInput.trim();
 
-  // Block flag injection attempts or shell characters
-  if (trimmed.startsWith("-") || /[;&|`$<>^]/.test(trimmed)) {
+  // Strip accidental wrapping quotes if copied from terminal/json
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    trimmed = trimmed.slice(1, -1).trim();
+  }
+
+  // Block flag injection attempts or dangerous shell metacharacters
+  // Note: '&' and '?' are essential URL query string delimiters and must be permitted.
+  if (trimmed.startsWith("-") || /\s/.test(trimmed) || /[;|`$<>^"']/.test(trimmed)) {
     return { isValid: false, error: "Link contém caracteres inválidos ou suspeitos." };
   }
 
