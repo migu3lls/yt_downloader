@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.gitignore
+.venv
+downloads
+temp
+media_cache
+*.log
+upstream_repo
