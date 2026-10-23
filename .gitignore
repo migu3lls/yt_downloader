@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build
+.next/
+out/
+build/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Environment and sensitive keys (strictly forbidden from repo)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# Temporary download caches and media
+downloads/
+temp/
+media_cache/
+
+# Upstream desktop reference
+upstream_repo/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

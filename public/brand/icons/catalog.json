@@ -1,0 +1,674 @@
+[
+  {
+    "name": "send",
+    "category": "set1",
+    "png": "/brand/icons/send.png",
+    "png_green": "/brand/icons/green/send.png",
+    "png_white": "/brand/icons/white/send.png",
+    "svg": "/brand/icons/send.svg"
+  },
+  {
+    "name": "cart",
+    "category": "set1",
+    "png": "/brand/icons/cart.png",
+    "png_green": "/brand/icons/green/cart.png",
+    "png_white": "/brand/icons/white/cart.png",
+    "svg": "/brand/icons/cart.svg"
+  },
+  {
+    "name": "mortar",
+    "category": "set1",
+    "png": "/brand/icons/mortar.png",
+    "png_green": "/brand/icons/green/mortar.png",
+    "png_white": "/brand/icons/white/mortar.png",
+    "svg": "/brand/icons/mortar.svg"
+  },
+  {
+    "name": "heart-plant",
+    "category": "set1",
+    "png": "/brand/icons/heart-plant.png",
+    "png_green": "/brand/icons/green/heart-plant.png",
+    "png_white": "/brand/icons/white/heart-plant.png",
+    "svg": "/brand/icons/heart-plant.svg"
+  },
+  {
+    "name": "chat-dots",
+    "category": "set1",
+    "png": "/brand/icons/chat-dots.png",
+    "png_green": "/brand/icons/green/chat-dots.png",
+    "png_white": "/brand/icons/white/chat-dots.png",
+    "svg": "/brand/icons/chat-dots.svg"
+  },
+  {
+    "name": "calendar",
+    "category": "set1",
+    "png": "/brand/icons/calendar.png",
+    "png_green": "/brand/icons/green/calendar.png",
+    "png_white": "/brand/icons/white/calendar.png",
+    "svg": "/brand/icons/calendar.svg"
+  },
+  {
+    "name": "call-chat",
+    "category": "set1",
+    "png": "/brand/icons/call-chat.png",
+    "png_green": "/brand/icons/green/call-chat.png",
+    "png_white": "/brand/icons/white/call-chat.png",
+    "svg": "/brand/icons/call-chat.svg"
+  },
+  {
+    "name": "user",
+    "category": "set1",
+    "png": "/brand/icons/user.png",
+    "png_green": "/brand/icons/green/user.png",
+    "png_white": "/brand/icons/white/user.png",
+    "svg": "/brand/icons/user.svg"
+  },
+  {
+    "name": "rocket",
+    "category": "set1",
+    "png": "/brand/icons/rocket.png",
+    "png_green": "/brand/icons/green/rocket.png",
+    "png_white": "/brand/icons/white/rocket.png",
+    "svg": "/brand/icons/rocket.svg"
+  },
+  {
+    "name": "unlock",
+    "category": "set1",
+    "png": "/brand/icons/unlock.png",
+    "png_green": "/brand/icons/green/unlock.png",
+    "png_white": "/brand/icons/white/unlock.png",
+    "svg": "/brand/icons/unlock.svg"
+  },
+  {
+    "name": "eye",
+    "category": "set1",
+    "png": "/brand/icons/eye.png",
+    "png_green": "/brand/icons/green/eye.png",
+    "png_white": "/brand/icons/white/eye.png",
+    "svg": "/brand/icons/eye.svg"
+  },
+  {
+    "name": "hand-wave",
+    "category": "set1",
+    "png": "/brand/icons/hand-wave.png",
+    "png_green": "/brand/icons/green/hand-wave.png",
+    "png_white": "/brand/icons/white/hand-wave.png",
+    "svg": "/brand/icons/hand-wave.svg"
+  },
+  {
+    "name": "sprout",
+    "category": "set1",
+    "png": "/brand/icons/sprout.png",
+    "png_green": "/brand/icons/green/sprout.png",
+    "png_white": "/brand/icons/white/sprout.png",
+    "svg": "/brand/icons/sprout.svg"
+  },
+  {
+    "name": "shopping-bag",
+    "category": "set1",
+    "png": "/brand/icons/shopping-bag.png",
+    "png_green": "/brand/icons/green/shopping-bag.png",
+    "png_white": "/brand/icons/white/shopping-bag.png",
+    "svg": "/brand/icons/shopping-bag.svg"
+  },
+  {
+    "name": "storefront",
+    "category": "set1",
+    "png": "/brand/icons/storefront.png",
+    "png_green": "/brand/icons/green/storefront.png",
+    "png_white": "/brand/icons/white/storefront.png",
+    "svg": "/brand/icons/storefront.svg"
+  },
+  {
+    "name": "globe",
+    "category": "set1",
+    "png": "/brand/icons/globe.png",
+    "png_green": "/brand/icons/green/globe.png",
+    "png_white": "/brand/icons/white/globe.png",
+    "svg": "/brand/icons/globe.svg"
+  },
+  {
+    "name": "car",
+    "category": "set1",
+    "png": "/brand/icons/car.png",
+    "png_green": "/brand/icons/green/car.png",
+    "png_white": "/brand/icons/white/car.png",
+    "svg": "/brand/icons/car.svg"
+  },
+  {
+    "name": "mountains",
+    "category": "set1",
+    "png": "/brand/icons/mountains.png",
+    "png_green": "/brand/icons/green/mountains.png",
+    "png_white": "/brand/icons/white/mountains.png",
+    "svg": "/brand/icons/mountains.svg"
+  },
+  {
+    "name": "picture",
+    "category": "set1",
+    "png": "/brand/icons/picture.png",
+    "png_green": "/brand/icons/green/picture.png",
+    "png_white": "/brand/icons/white/picture.png",
+    "svg": "/brand/icons/picture.svg"
+  },
+  {
+    "name": "wallet",
+    "category": "set1",
+    "png": "/brand/icons/wallet.png",
+    "png_green": "/brand/icons/green/wallet.png",
+    "png_white": "/brand/icons/white/wallet.png",
+    "svg": "/brand/icons/wallet.svg"
+  },
+  {
+    "name": "diamond-ring",
+    "category": "set1",
+    "png": "/brand/icons/diamond-ring.png",
+    "png_green": "/brand/icons/green/diamond-ring.png",
+    "png_white": "/brand/icons/white/diamond-ring.png",
+    "svg": "/brand/icons/diamond-ring.svg"
+  },
+  {
+    "name": "institution",
+    "category": "set1",
+    "png": "/brand/icons/institution.png",
+    "png_green": "/brand/icons/green/institution.png",
+    "png_white": "/brand/icons/white/institution.png",
+    "svg": "/brand/icons/institution.svg"
+  },
+  {
+    "name": "briefcase",
+    "category": "set1",
+    "png": "/brand/icons/briefcase.png",
+    "png_green": "/brand/icons/green/briefcase.png",
+    "png_white": "/brand/icons/white/briefcase.png",
+    "svg": "/brand/icons/briefcase.svg"
+  },
+  {
+    "name": "pin-map",
+    "category": "set1",
+    "png": "/brand/icons/pin-map.png",
+    "png_green": "/brand/icons/green/pin-map.png",
+    "png_white": "/brand/icons/white/pin-map.png",
+    "svg": "/brand/icons/pin-map.svg"
+  },
+  {
+    "name": "support-headset",
+    "category": "set1",
+    "png": "/brand/icons/support-headset.png",
+    "png_green": "/brand/icons/green/support-headset.png",
+    "png_white": "/brand/icons/white/support-headset.png",
+    "svg": "/brand/icons/support-headset.svg"
+  },
+  {
+    "name": "command-key",
+    "category": "set1",
+    "png": "/brand/icons/command-key.png",
+    "png_green": "/brand/icons/green/command-key.png",
+    "png_white": "/brand/icons/white/command-key.png",
+    "svg": "/brand/icons/command-key.svg"
+  },
+  {
+    "name": "fingerprint",
+    "category": "set1",
+    "png": "/brand/icons/fingerprint.png",
+    "png_green": "/brand/icons/green/fingerprint.png",
+    "png_white": "/brand/icons/white/fingerprint.png",
+    "svg": "/brand/icons/fingerprint.svg"
+  },
+  {
+    "name": "sliders",
+    "category": "set1",
+    "png": "/brand/icons/sliders.png",
+    "png_green": "/brand/icons/green/sliders.png",
+    "png_white": "/brand/icons/white/sliders.png",
+    "svg": "/brand/icons/sliders.svg"
+  },
+  {
+    "name": "trash",
+    "category": "set1",
+    "png": "/brand/icons/trash.png",
+    "png_green": "/brand/icons/green/trash.png",
+    "png_white": "/brand/icons/white/trash.png",
+    "svg": "/brand/icons/trash.svg"
+  },
+  {
+    "name": "quill",
+    "category": "set1",
+    "png": "/brand/icons/quill.png",
+    "png_green": "/brand/icons/green/quill.png",
+    "png_white": "/brand/icons/white/quill.png",
+    "svg": "/brand/icons/quill.svg"
+  },
+  {
+    "name": "heart",
+    "category": "set1",
+    "png": "/brand/icons/heart.png",
+    "png_green": "/brand/icons/green/heart.png",
+    "png_white": "/brand/icons/white/heart.png",
+    "svg": "/brand/icons/heart.svg"
+  },
+  {
+    "name": "home",
+    "category": "set1",
+    "png": "/brand/icons/home.png",
+    "png_green": "/brand/icons/green/home.png",
+    "png_white": "/brand/icons/white/home.png",
+    "svg": "/brand/icons/home.svg"
+  },
+  {
+    "name": "thumb-up",
+    "category": "set1",
+    "png": "/brand/icons/thumb-up.png",
+    "png_green": "/brand/icons/green/thumb-up.png",
+    "png_white": "/brand/icons/white/thumb-up.png",
+    "svg": "/brand/icons/thumb-up.svg"
+  },
+  {
+    "name": "power-plug",
+    "category": "set1",
+    "png": "/brand/icons/power-plug.png",
+    "png_green": "/brand/icons/green/power-plug.png",
+    "png_white": "/brand/icons/white/power-plug.png",
+    "svg": "/brand/icons/power-plug.svg"
+  },
+  {
+    "name": "trophy",
+    "category": "set1",
+    "png": "/brand/icons/trophy.png",
+    "png_green": "/brand/icons/green/trophy.png",
+    "png_white": "/brand/icons/white/trophy.png",
+    "svg": "/brand/icons/trophy.svg"
+  },
+  {
+    "name": "helmet",
+    "category": "set1",
+    "png": "/brand/icons/helmet.png",
+    "png_green": "/brand/icons/green/helmet.png",
+    "png_white": "/brand/icons/white/helmet.png",
+    "svg": "/brand/icons/helmet.svg"
+  },
+  {
+    "name": "help-circle",
+    "category": "set1",
+    "png": "/brand/icons/help-circle.png",
+    "png_green": "/brand/icons/green/help-circle.png",
+    "png_white": "/brand/icons/white/help-circle.png",
+    "svg": "/brand/icons/help-circle.svg"
+  },
+  {
+    "name": "microphone",
+    "category": "set1",
+    "png": "/brand/icons/microphone.png",
+    "png_green": "/brand/icons/green/microphone.png",
+    "png_white": "/brand/icons/white/microphone.png",
+    "svg": "/brand/icons/microphone.svg"
+  },
+  {
+    "name": "basket",
+    "category": "set1",
+    "png": "/brand/icons/basket.png",
+    "png_green": "/brand/icons/green/basket.png",
+    "png_white": "/brand/icons/white/basket.png",
+    "svg": "/brand/icons/basket.svg"
+  },
+  {
+    "name": "bell",
+    "category": "set1",
+    "png": "/brand/icons/bell.png",
+    "png_green": "/brand/icons/green/bell.png",
+    "png_white": "/brand/icons/white/bell.png",
+    "svg": "/brand/icons/bell.svg"
+  },
+  {
+    "name": "gift-featured",
+    "category": "set2",
+    "png": "/brand/icons/gift-featured.png",
+    "png_green": "/brand/icons/green/gift-featured.png",
+    "png_white": "/brand/icons/white/gift-featured.png",
+    "svg": "/brand/icons/gift-featured.svg"
+  },
+  {
+    "name": "biometrics-face",
+    "category": "set2",
+    "png": "/brand/icons/biometrics-face.png",
+    "png_green": "/brand/icons/green/biometrics-face.png",
+    "png_white": "/brand/icons/white/biometrics-face.png",
+    "svg": "/brand/icons/biometrics-face.svg"
+  },
+  {
+    "name": "money-bag-featured",
+    "category": "set2",
+    "png": "/brand/icons/money-bag-featured.png",
+    "png_green": "/brand/icons/green/money-bag-featured.png",
+    "png_white": "/brand/icons/white/money-bag-featured.png",
+    "svg": "/brand/icons/money-bag-featured.svg"
+  },
+  {
+    "name": "certified-sunrise",
+    "category": "set2",
+    "png": "/brand/icons/certified-sunrise.png",
+    "png_green": "/brand/icons/green/certified-sunrise.png",
+    "png_white": "/brand/icons/white/certified-sunrise.png",
+    "svg": "/brand/icons/certified-sunrise.svg"
+  },
+  {
+    "name": "coins-pouch",
+    "category": "set3",
+    "png": "/brand/icons/coins-pouch.png",
+    "png_green": "/brand/icons/green/coins-pouch.png",
+    "png_white": "/brand/icons/white/coins-pouch.png",
+    "svg": "/brand/icons/coins-pouch.svg"
+  },
+  {
+    "name": "thumb-up-bold",
+    "category": "set3",
+    "png": "/brand/icons/thumb-up-bold.png",
+    "png_green": "/brand/icons/green/thumb-up-bold.png",
+    "png_white": "/brand/icons/white/thumb-up-bold.png",
+    "svg": "/brand/icons/thumb-up-bold.svg"
+  },
+  {
+    "name": "parachute-crate",
+    "category": "set3",
+    "png": "/brand/icons/parachute-crate.png",
+    "png_green": "/brand/icons/green/parachute-crate.png",
+    "png_white": "/brand/icons/white/parachute-crate.png",
+    "svg": "/brand/icons/parachute-crate.svg"
+  },
+  {
+    "name": "rocket-takeoff",
+    "category": "set3",
+    "png": "/brand/icons/rocket-takeoff.png",
+    "png_green": "/brand/icons/green/rocket-takeoff.png",
+    "png_white": "/brand/icons/white/rocket-takeoff.png",
+    "svg": "/brand/icons/rocket-takeoff.svg"
+  },
+  {
+    "name": "lollipop",
+    "category": "set3",
+    "png": "/brand/icons/lollipop.png",
+    "png_green": "/brand/icons/green/lollipop.png",
+    "png_white": "/brand/icons/white/lollipop.png",
+    "svg": "/brand/icons/lollipop.svg"
+  },
+  {
+    "name": "c-badge",
+    "category": "set3",
+    "png": "/brand/icons/c-badge.png",
+    "png_green": "/brand/icons/green/c-badge.png",
+    "png_white": "/brand/icons/white/c-badge.png",
+    "svg": "/brand/icons/c-badge.svg"
+  },
+  {
+    "name": "elephant",
+    "category": "set3",
+    "png": "/brand/icons/elephant.png",
+    "png_green": "/brand/icons/green/elephant.png",
+    "png_white": "/brand/icons/white/elephant.png",
+    "svg": "/brand/icons/elephant.svg"
+  },
+  {
+    "name": "crystal-ball",
+    "category": "set3",
+    "png": "/brand/icons/crystal-ball.png",
+    "png_green": "/brand/icons/green/crystal-ball.png",
+    "png_white": "/brand/icons/white/crystal-ball.png",
+    "svg": "/brand/icons/crystal-ball.svg"
+  },
+  {
+    "name": "invoice-receipt",
+    "category": "set3",
+    "png": "/brand/icons/invoice-receipt.png",
+    "png_green": "/brand/icons/green/invoice-receipt.png",
+    "png_white": "/brand/icons/white/invoice-receipt.png",
+    "svg": "/brand/icons/invoice-receipt.svg"
+  },
+  {
+    "name": "calendar-sheet",
+    "category": "set3",
+    "png": "/brand/icons/calendar-sheet.png",
+    "png_green": "/brand/icons/green/calendar-sheet.png",
+    "png_white": "/brand/icons/white/calendar-sheet.png",
+    "svg": "/brand/icons/calendar-sheet.svg"
+  },
+  {
+    "name": "calendar-dates",
+    "category": "set3",
+    "png": "/brand/icons/calendar-dates.png",
+    "png_green": "/brand/icons/green/calendar-dates.png",
+    "png_white": "/brand/icons/white/calendar-dates.png",
+    "svg": "/brand/icons/calendar-dates.svg"
+  },
+  {
+    "name": "usb-pendant",
+    "category": "set3",
+    "png": "/brand/icons/usb-pendant.png",
+    "png_green": "/brand/icons/green/usb-pendant.png",
+    "png_white": "/brand/icons/white/usb-pendant.png",
+    "svg": "/brand/icons/usb-pendant.svg"
+  },
+  {
+    "name": "heart-outline",
+    "category": "set3",
+    "png": "/brand/icons/heart-outline.png",
+    "png_green": "/brand/icons/green/heart-outline.png",
+    "png_white": "/brand/icons/white/heart-outline.png",
+    "svg": "/brand/icons/heart-outline.svg"
+  },
+  {
+    "name": "marketplace",
+    "category": "set3",
+    "png": "/brand/icons/marketplace.png",
+    "png_green": "/brand/icons/green/marketplace.png",
+    "png_white": "/brand/icons/white/marketplace.png",
+    "svg": "/brand/icons/marketplace.svg"
+  },
+  {
+    "name": "bottle-remedy",
+    "category": "set3",
+    "png": "/brand/icons/bottle-remedy.png",
+    "png_green": "/brand/icons/green/bottle-remedy.png",
+    "png_white": "/brand/icons/white/bottle-remedy.png",
+    "svg": "/brand/icons/bottle-remedy.svg"
+  },
+  {
+    "name": "phone-diagonal",
+    "category": "set3",
+    "png": "/brand/icons/phone-diagonal.png",
+    "png_green": "/brand/icons/green/phone-diagonal.png",
+    "png_white": "/brand/icons/white/phone-diagonal.png",
+    "svg": "/brand/icons/phone-diagonal.svg"
+  },
+  {
+    "name": "lock-secure",
+    "category": "set3",
+    "png": "/brand/icons/lock-secure.png",
+    "png_green": "/brand/icons/green/lock-secure.png",
+    "png_white": "/brand/icons/white/lock-secure.png",
+    "svg": "/brand/icons/lock-secure.svg"
+  },
+  {
+    "name": "mail-envelope",
+    "category": "set3",
+    "png": "/brand/icons/mail-envelope.png",
+    "png_green": "/brand/icons/green/mail-envelope.png",
+    "png_white": "/brand/icons/white/mail-envelope.png",
+    "svg": "/brand/icons/mail-envelope.svg"
+  },
+  {
+    "name": "padlock-open",
+    "category": "set3",
+    "png": "/brand/icons/padlock-open.png",
+    "png_green": "/brand/icons/green/padlock-open.png",
+    "png_white": "/brand/icons/white/padlock-open.png",
+    "svg": "/brand/icons/padlock-open.svg"
+  },
+  {
+    "name": "paperclip",
+    "category": "set3",
+    "png": "/brand/icons/paperclip.png",
+    "png_green": "/brand/icons/green/paperclip.png",
+    "png_white": "/brand/icons/white/paperclip.png",
+    "svg": "/brand/icons/paperclip.svg"
+  },
+  {
+    "name": "bag-tag",
+    "category": "set4",
+    "png": "/brand/icons/bag-tag.png",
+    "png_green": "/brand/icons/green/bag-tag.png",
+    "png_white": "/brand/icons/white/bag-tag.png",
+    "svg": "/brand/icons/bag-tag.svg"
+  },
+  {
+    "name": "present-box",
+    "category": "set4",
+    "png": "/brand/icons/present-box.png",
+    "png_green": "/brand/icons/green/present-box.png",
+    "png_white": "/brand/icons/white/present-box.png",
+    "svg": "/brand/icons/present-box.svg"
+  },
+  {
+    "name": "dome-hut",
+    "category": "set4",
+    "png": "/brand/icons/dome-hut.png",
+    "png_green": "/brand/icons/green/dome-hut.png",
+    "png_white": "/brand/icons/white/dome-hut.png",
+    "svg": "/brand/icons/dome-hut.svg"
+  },
+  {
+    "name": "oil-bowl",
+    "category": "set4",
+    "png": "/brand/icons/oil-bowl.png",
+    "png_green": "/brand/icons/green/oil-bowl.png",
+    "png_white": "/brand/icons/white/oil-bowl.png",
+    "svg": "/brand/icons/oil-bowl.svg"
+  },
+  {
+    "name": "airplane",
+    "category": "set4",
+    "png": "/brand/icons/airplane.png",
+    "png_green": "/brand/icons/green/airplane.png",
+    "png_white": "/brand/icons/white/airplane.png",
+    "svg": "/brand/icons/airplane.svg"
+  },
+  {
+    "name": "hand-coins",
+    "category": "set4",
+    "png": "/brand/icons/hand-coins.png",
+    "png_green": "/brand/icons/green/hand-coins.png",
+    "png_white": "/brand/icons/white/hand-coins.png",
+    "svg": "/brand/icons/hand-coins.svg"
+  },
+  {
+    "name": "eye-open",
+    "category": "set4",
+    "png": "/brand/icons/eye-open.png",
+    "png_green": "/brand/icons/green/eye-open.png",
+    "png_white": "/brand/icons/white/eye-open.png",
+    "svg": "/brand/icons/eye-open.svg"
+  },
+  {
+    "name": "bbq-grill",
+    "category": "set4",
+    "png": "/brand/icons/bbq-grill.png",
+    "png_green": "/brand/icons/green/bbq-grill.png",
+    "png_white": "/brand/icons/white/bbq-grill.png",
+    "svg": "/brand/icons/bbq-grill.svg"
+  },
+  {
+    "name": "smile-shield",
+    "category": "set4",
+    "png": "/brand/icons/smile-shield.png",
+    "png_green": "/brand/icons/green/smile-shield.png",
+    "png_white": "/brand/icons/white/smile-shield.png",
+    "svg": "/brand/icons/smile-shield.svg"
+  },
+  {
+    "name": "potted-plant",
+    "category": "set4",
+    "png": "/brand/icons/potted-plant.png",
+    "png_green": "/brand/icons/green/potted-plant.png",
+    "png_white": "/brand/icons/white/potted-plant.png",
+    "svg": "/brand/icons/potted-plant.svg"
+  },
+  {
+    "name": "target-lifebuoy",
+    "category": "set4",
+    "png": "/brand/icons/target-lifebuoy.png",
+    "png_green": "/brand/icons/green/target-lifebuoy.png",
+    "png_white": "/brand/icons/white/target-lifebuoy.png",
+    "svg": "/brand/icons/target-lifebuoy.svg"
+  },
+  {
+    "name": "robot-bot",
+    "category": "set4",
+    "png": "/brand/icons/robot-bot.png",
+    "png_green": "/brand/icons/green/robot-bot.png",
+    "png_white": "/brand/icons/white/robot-bot.png",
+    "svg": "/brand/icons/robot-bot.svg"
+  },
+  {
+    "name": "user-circle",
+    "category": "set4",
+    "png": "/brand/icons/user-circle.png",
+    "png_green": "/brand/icons/green/user-circle.png",
+    "png_white": "/brand/icons/white/user-circle.png",
+    "svg": "/brand/icons/user-circle.svg"
+  },
+  {
+    "name": "pulse-heart",
+    "category": "set4",
+    "png": "/brand/icons/pulse-heart.png",
+    "png_green": "/brand/icons/green/pulse-heart.png",
+    "png_white": "/brand/icons/white/pulse-heart.png",
+    "svg": "/brand/icons/pulse-heart.svg"
+  },
+  {
+    "name": "ring-gem",
+    "category": "set4",
+    "png": "/brand/icons/ring-gem.png",
+    "png_green": "/brand/icons/green/ring-gem.png",
+    "png_white": "/brand/icons/white/ring-gem.png",
+    "svg": "/brand/icons/ring-gem.svg"
+  },
+  {
+    "name": "gold-ingots",
+    "category": "set4",
+    "png": "/brand/icons/gold-ingots.png",
+    "png_green": "/brand/icons/green/gold-ingots.png",
+    "png_white": "/brand/icons/white/gold-ingots.png",
+    "svg": "/brand/icons/gold-ingots.svg"
+  },
+  {
+    "name": "postbox-mail",
+    "category": "set4",
+    "png": "/brand/icons/postbox-mail.png",
+    "png_green": "/brand/icons/green/postbox-mail.png",
+    "png_white": "/brand/icons/white/postbox-mail.png",
+    "svg": "/brand/icons/postbox-mail.svg"
+  },
+  {
+    "name": "bell-ding",
+    "category": "set4",
+    "png": "/brand/icons/bell-ding.png",
+    "png_green": "/brand/icons/green/bell-ding.png",
+    "png_white": "/brand/icons/white/bell-ding.png",
+    "svg": "/brand/icons/bell-ding.svg"
+  },
+  {
+    "name": "tote-bag",
+    "category": "set4",
+    "png": "/brand/icons/tote-bag.png",
+    "png_green": "/brand/icons/green/tote-bag.png",
+    "png_white": "/brand/icons/white/tote-bag.png",
+    "svg": "/brand/icons/tote-bag.svg"
+  },
+  {
+    "name": "wave-doc",
+    "category": "set4",
+    "png": "/brand/icons/wave-doc.png",
+    "png_green": "/brand/icons/green/wave-doc.png",
+    "png_white": "/brand/icons/white/wave-doc.png",
+    "svg": "/brand/icons/wave-doc.svg"
+  }
+]
