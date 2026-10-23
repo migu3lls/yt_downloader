@@ -5,6 +5,7 @@
   "description": "YouTube Media Studio & Converter sob o Design System 10ATIVAS V2 e Supabase BaaS",
   "scripts": {
     "dev": "next dev",
+    "clean": "node -e \"require('fs').rmSync('.next', { recursive: true, force: true })\"",
     "build": "next build",
     "start": "next start",
     "lint": "biome check src/",
