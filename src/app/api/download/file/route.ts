@@ -1,7 +1,5 @@
 import { promises as fs } from "node:fs";
-import { createReadStream } from "node:fs";
-import { Readable } from "node:stream";
-import { cleanupJob, getJob } from "@/lib/jobs/downloadManager";
+import { getJob } from "@/lib/jobs/downloadManager";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -12,7 +10,7 @@ export async function GET(req: NextRequest) {
     return new NextResponse("jobId ausente", { status: 400 });
   }
 
-  const job = getJob(jobId);
+  const job = await getJob(jobId);
   if (!job || !job.filePath || job.status !== "ready") {
     return new NextResponse("Arquivo não encontrado, ainda em processamento ou expirado.", {
       status: 404,
@@ -20,31 +18,27 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const stat = await fs.stat(job.filePath);
-    const nodeStream = createReadStream(job.filePath);
-    const webStream = Readable.toWeb(nodeStream) as ReadableStream;
-
+    const fileBuffer = await fs.readFile(job.filePath);
     const contentType = job.format === "mp3" ? "audio/mpeg" : "video/mp4";
-    // Encode filename safely for Content-Disposition header
-    const safeFilename = encodeURIComponent(job.fileName || `media.${job.format}`).replace(
-      /%20/g,
-      " ",
-    );
 
-    // Schedule cleanup shortly after download starts to enforce ephemeral privacy
-    setTimeout(() => {
-      cleanupJob(jobId);
-    }, 15000);
+    // RFC 6266 compliant filename headers:
+    // 1. ASCII fallback removing accents, pipe symbols and invalid HTTP header chars
+    // 2. UTF-8 encoded version for full international character fidelity
+    const rawName = job.fileName || `media.${job.format}`;
+    const asciiFallback = rawName
+      .replace(/[^\x20-\x7E]/g, "")
+      .replace(/[^a-zA-Z0-9._ -]/g, "_")
+      .trim();
 
-    return new NextResponse(webStream, {
+    const utf8Encoded = encodeURIComponent(rawName);
+
+    return new NextResponse(fileBuffer, {
       status: 200,
       headers: {
         "Content-Type": contentType,
-        "Content-Length": stat.size.toString(),
-        "Content-Disposition": `attachment; filename="${safeFilename}"; filename*=UTF-8''${safeFilename}`,
-        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
+        "Content-Length": fileBuffer.length.toString(),
+        "Content-Disposition": `attachment; filename="${asciiFallback}"; filename*=UTF-8''${utf8Encoded}`,
+        "Cache-Control": "public, max-age=3600",
       },
     });
   } catch (err: unknown) {

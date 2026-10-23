@@ -20,10 +20,65 @@ export interface DownloadJob {
   createdAt: number;
 }
 
-const activeJobs = new Map<string, DownloadJob>();
+interface GlobalDownloadRegistry {
+  jobs: Map<string, DownloadJob>;
+}
 
-export function getJob(jobId: string): DownloadJob | undefined {
-  return activeJobs.get(jobId);
+const globalRegistry = globalThis as unknown as {
+  __10ativas_registry?: GlobalDownloadRegistry;
+};
+
+if (!globalRegistry.__10ativas_registry) {
+  globalRegistry.__10ativas_registry = {
+    jobs: new Map<string, DownloadJob>(),
+  };
+}
+
+const activeJobs = globalRegistry.__10ativas_registry.jobs;
+
+export async function getJob(jobId: string): Promise<DownloadJob | undefined> {
+  const inMemory = activeJobs.get(jobId);
+  if (inMemory && inMemory.status === "ready" && inMemory.filePath) {
+    return inMemory;
+  }
+
+  // Filesystem fallback: verify if the converted media exists in temp directory
+  try {
+    const tempDir = path.join(os.tmpdir(), "10ativas_downloads", jobId);
+    const files = await fs.readdir(tempDir);
+    const target = files.find(
+      (f) => f.endsWith(".mp3") || f.endsWith(".mp4") || f.endsWith(".m4a") || f.endsWith(".webm"),
+    );
+
+    if (target) {
+      const fullPath = path.join(tempDir, target);
+      const isMp3 = target.endsWith(".mp3");
+      const restoredJob: DownloadJob = inMemory || {
+        id: jobId,
+        url: "",
+        format: isMp3 ? "mp3" : "mp4",
+        quality: "best",
+        downloadPlaylist: false,
+        status: "ready",
+        progressPercent: 100,
+        speed: "Concluído",
+        eta: "0s",
+        title: target.replace(/\.[^/.]+$/, ""),
+        filePath: fullPath,
+        fileName: target,
+        createdAt: Date.now(),
+      };
+      restoredJob.status = "ready";
+      restoredJob.filePath = fullPath;
+      restoredJob.fileName = target;
+      activeJobs.set(jobId, restoredJob);
+      return restoredJob;
+    }
+  } catch {
+    // Directory does not exist
+  }
+
+  return inMemory;
 }
 
 export async function createDownloadJob(params: {
