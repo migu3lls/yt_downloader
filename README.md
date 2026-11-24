@@ -1,139 +1,221 @@
-# 10Ativas Media Studio (YouTube Downloader Web)
+# `yt_downloader` — Hardened Developer SDK, CLI & Next.js 15 Reference Studio
 
-> **Interface web soberba, segura e performática para extração e conversão de áudio (MP3 320kbps) e vídeo (MP4 até 1080p).**  
-> Desenvolvida sob o padrão **10ATIVAS Design System V2** e arquitetura BaaS com **Supabase**.
+[![License: MIT](https://img.shields.io/badge/License-MIT-18E299.svg)](https://opensource.org/licenses/MIT)
+[![CI Pipeline](https://github.com/migu3lls/yt_downloader/actions/workflows/ci.yml/badge.svg)](https://github.com/migu3lls/yt_downloader/actions/workflows/ci.yml)
+[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D20.0-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+[![Python](https://img.shields.io/badge/Python-%3E%3D3.10-3776AB?logo=python&logoColor=white)](https://python.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.1-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Code Style: Biome](https://img.shields.io/badge/Code_Style-Biome-60A5FA?logo=biome&logoColor=white)](https://biomejs.dev/)
 
----
-
-## ⚡ Destaques do Projeto
-
-* **Zero Instalação:** O usuário não precisa configurar Python, Git, VS C++ Build Tools ou FFmpeg localmente.
-* **Design System 10ATIVAS V2:**
-  * Tipografia oficial: **Sora** (headlines, interface, navegação) e **Geist Mono** (labels técnicos, status, métricas e ETA).
-  * Paleta oficial: **Obsidian** (`#0D0D0D`), **Verde 10Ativas** (`#18E299`), **Verde Profundo** (`#0FA76E`) e superfícies limpas.
-  * Motion System V2: Animação vetorial paramétrica com curvas de Bézier e revelação esmeralda (`AnimatedLogoReveal.tsx`).
-  * Biblioteca oficial de ícones com fundo 100% transparente em `public/brand/icons/`.
-* **Segurança e Privacidade Efêmera (Zero-Persistence):**
-  * Proibição expressa de tokens perenes em `localStorage`. Todas as sessões operam via `sessionStorage` e expurgo automático nos eventos `beforeunload` e `pagehide`.
-  * Nenhum arquivo `.env` com segredos estáticos locais em produção. Chaves dinâmicas gerenciadas via Supabase Vault.
-  * Rate limiting em memória e nas rotas de API para prevenção de abusos e ataques DDoS.
-  * Sanitização rigorosa contra **Command Injection**, **SQL Injection** e **Prompt Injection**.
-  * Arquivos em disco com TTL (Time-To-Live) de expurgo automático após download.
-* **Qualidade e Governança:**
-  * Linter & Formatter: **Biome**.
-  * Testes Unitários: **Vitest** cobrindo validadores de URL e vetores de injeção.
-  * Sincronização e Devlog no Notion (`docs/NOTION_SYNC.md`).
-  * Diretrizes de IA documentadas em `AI_INSTRUCTIONS.md`.
+> **Hardened TypeScript & Python Developer SDK, Cross-Platform CLI (`yt-dl`), Composite GitHub Action, and Next.js 15 Reference Architecture for zero-shell-injection YouTube media extraction via `yt-dlp`, `FFmpeg`, and `Supabase`.**
 
 ---
 
-## 🏗️ Arquitetura do Sistema
+## 🎯 Why `yt_downloader`? (For Developers & Platform Engineers)
 
-```text
-┌────────────────────────────────────────────────────────┐
-│               FRONTEND: Next.js 15 (App Router)        │
-│    React 19 + TypeScript + Tailwind CSS (10ATIVAS V2)  │
-│      Framer Motion (Kowalski Principles) + Sonner      │
-└──────────────────────────┬─────────────────────────────┘
-                           │ HTTPS / WSS
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│               BaaS & GATEWAY: Supabase                 │
-│  - Supabase Auth (Ephemeral Session / Guest Token)    │
-│  - Supabase Postgres (Jobs, Metadados & RLS Estrito)   │
-│  - Supabase Realtime (Canais de Progresso em WSS)      │
-│  - Supabase Storage (Bucket efêmero / TTL 15 min)      │
-│  - Supabase Vault (Gestão segura de segredos/chaves)   │
-└──────────────────────────┬─────────────────────────────┘
-                           │ Processamento Nativo
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│         ENGINE DE EXTRAÇÃO: yt-dlp + FFmpeg            │
-│       Python 3.12+ (Nativo ou Container Docker)        │
-│       Rate Limiting + Isolamento de Execução           │
-└────────────────────────────────────────────────────────┘
+Most wrappers around `yt-dlp` and `FFmpeg` concatenate raw user strings into shell commands (`child_process.exec` or `subprocess.Popen(shell=True)`), exposing applications to **Remote Command Execution (`CWE-78`)**, **Argument/Flag Injection (`CWE-88`, e.g., `--exec`, `--output`)**, and **SSRF**.
+
+`yt_downloader` solves this by providing a **multi-layered developer toolkit**:
+1. **📦 TypeScript / Node.js SDK (`yt-downloader-sdk`)**: Drop-in programmatic modules for strict URL sanitization, token-bucket rate limiting, and non-blocking job orchestration (`src/index.ts`).
+2. **🐍 Python Package & SDK (`yt-downloader-cli`)**: PEP 621 compliant package (`pyproject.toml`) with frozen dataclasses and zero-shell subprocess invocation (`python/yt_downloader/`).
+3. **💻 Dual Automation CLIs (`yt-dl` & `yt-dl-py`)**: Headless CLI tools with `--json` and `--info` modes tailored for CI/CD pipelines, AI agents, and batch media workflows.
+4. **⚙️ Reusable GitHub Action (`action.yml`)**: Composite action to validate and extract YouTube media directly inside third-party GitHub workflows.
+5. **🌐 Next.js 15 + React 19 + Supabase Reference Studio**: Full-stack production template featuring ephemeral `sessionStorage` lifecycles, automatic `beforeunload` purge, and multi-stage Docker containerization.
+
+---
+
+## 📦 1. Using as a TypeScript / Node.js SDK
+
+Import the security validator, rate limiter, or job manager directly in any Node.js, Next.js, or Edge server application:
+
+```typescript
+import {
+  validateYouTubeUrl,
+  checkRateLimit,
+  createDownloadJob,
+  getJob,
+} from "yt-downloader-sdk";
+
+// 1. Strict Zero-Shell-Injection URL Validation (blocks CWE-78 & CWE-88 flag tampering)
+const result = validateYouTubeUrl("https://youtu.be/dQw4w9WgXcQ?list=RDdQw4w9WgXcQ");
+
+if (!result.isValid) {
+  throw new Error(result.error);
+}
+// result.cleanUrl   -> "https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ"
+// result.videoId    -> "dQw4w9WgXcQ"
+// result.isPlaylist -> true
+
+// 2. Token-Bucket Rate Limiting (Edge & Node compatible)
+const quota = checkRateLimit("client_ip_or_token", 30, 60_000);
+if (!quota.allowed) {
+  throw new Error(`Rate limit exceeded. Retry in ${quota.resetInSec}s`);
+}
+
+// 3. Non-Blocking Extraction Job Orchestration
+const jobId = await createDownloadJob({
+  url: result.cleanUrl!,
+  format: "mp3",
+  quality: "best",
+  downloadPlaylist: false,
+});
+
+const status = await getJob(jobId);
+console.log(status?.progressPercent, status?.status);
 ```
 
 ---
 
-## 🚀 Como Executar Localmente
+## 💻 2. Using the Developer CLI (`yt-dl` & `yt-dl-py`)
 
-### Pré-requisitos
-* **Node.js:** v20+ ou v24+
-* **Python:** 3.10+ com `yt-dlp` (`pip install yt-dlp`)
-* **FFmpeg:** Instalado e disponível no PATH do sistema operacional.
+### Node.js CLI (`yt-dl`)
+```bash
+# Inspect and sanitize metadata in structured JSON mode (ideal for CI & scripts)
+npx yt-dl "https://www.youtube.com/watch?v=dQw4w9WgXcQ" --info --json
 
-### 1. Clonar e Instalar Dependências
+# Extract 320kbps MP3 audio
+npx yt-dl "https://www.youtube.com/watch?v=dQw4w9WgXcQ" --format mp3 --output ./downloads
+
+# Extract 1080p MP4 video
+npx yt-dl "https://youtu.be/dQw4w9WgXcQ" -f mp4 -q 1080p -o ./downloads
+```
+
+### Python SDK & CLI (`yt-dl-py`)
+```bash
+# Install locally in editable mode
+pip install -e .
+
+# Run CLI in JSON inspection mode
+yt-dl-py "https://www.youtube.com/watch?v=dQw4w9WgXcQ" --info --json
+```
+
+```python
+from yt_downloader import validate_youtube_url
+
+res = validate_youtube_url("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+assert res.is_valid is True
+print(res.clean_url, res.video_id)
+```
+
+---
+
+## ⚙️ 3. Using as a GitHub Action in CI/CD Workflows
+
+Embed `migu3lls/yt_downloader` in your own `.github/workflows/` pipelines:
+
+```yaml
+steps:
+  - name: Validate & Inspect YouTube Source
+    id: yt
+    uses: migu3lls/yt_downloader@main
+    with:
+      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      info-only: "true"
+
+  - name: Print Sanitized Canonical URL
+    run: echo "Verified Video ID: ${{ steps.yt.outputs.video-id }}"
+```
+
+---
+
+## 🏗️ 4. System Architecture (Reference Web Studio & BaaS)
+
+```text
+┌────────────────────────────────────────────────────────────────┐
+│        DEVELOPER CONSUMERS: CLI (yt-dl) / SDK / CI Action      │
+│     Programmatic TS & Python APIs • JSON Automation Output     │
+└──────────────────────────────┬─────────────────────────────────┘
+                               │
+┌──────────────────────────────▼─────────────────────────────────┐
+│             WEB STUDIO: Next.js 15 (App Router)                │
+│      React 19 + TypeScript + Tailwind CSS (10ATIVAS V2)        │
+│            Framer Motion + Ephemeral Session Hooks             │
+└──────────────────────────────┬─────────────────────────────────┘
+                               │ HTTPS / WSS
+                               ▼
+┌────────────────────────────────────────────────────────────────┐
+│             SECURITY & BaaS GATEWAY: Supabase                  │
+│  - Zero-Shell Validator (CWE-78 / CWE-88 Flag Sanitization)    │
+│  - Token-Bucket Rate Limiter (Per-IP & Ephemeral Session)      │
+│  - Supabase Auth / Postgres RLS / Realtime WSS / Vault         │
+└──────────────────────────────┬─────────────────────────────────┘
+                               │ Isolated Subprocess (execFile/spawn)
+                               ▼
+┌────────────────────────────────────────────────────────────────┐
+│           EXTRACTION ENGINE: yt-dlp + FFmpeg                   │
+│         Python 3.12+ & Node 22 (Native or Docker Slim)         │
+│         UUID Directory Isolation + 20-Min Auto-TTL Purge       │
+└────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🚀 Quick Start (Local Development & Docker)
+
+### Option A: Docker Compose (Zero Local Setup)
 ```bash
 git clone https://github.com/migu3lls/yt_downloader.git
-cd yt
+cd yt_downloader
+docker compose up --build
+```
+
+### Option B: Local Node.js + Python Runtime
+```bash
+git clone https://github.com/migu3lls/yt_downloader.git
+cd yt_downloader
 npm install
-```
 
-### 2. Rodar Testes e Linter
-```bash
-npm test        # Executa suite de testes do Vitest
-npm run lint    # Executa verificação do Biome
-```
+# Run Linter & Unit Tests (TypeScript + Python)
+npm run lint
+npm test
+python -m unittest discover -s tests -p "test_*.py" -v
 
-### 3. Iniciar o Servidor de Desenvolvimento
-```bash
+# Start Next.js 15 Dev Server
 npm run dev
 ```
-Acesse a aplicação no seu navegador: **`http://localhost:3000`**
-
-### 4. Build de Produção
-```bash
-npm run build
-npm run start
-```
 
 ---
 
-## 📁 Estrutura do Repositório
+## 📁 Repository Structure
 
 ```text
-yt/
-├── AI_INSTRUCTIONS.md           # Instrução Mestra e regras obrigatórias de engenharia
-├── README.md                    # Documentação principal
-├── package.json                 # Dependências e scripts
-├── tsconfig.json                # Configuração TypeScript estrita
-├── tailwind.config.ts           # Configuração de tokens do 10ATIVAS V2
-├── biome.json                   # Configuração de formatação e linting Biome
-├── docs/
-│   └── NOTION_SYNC.md           # Templates prontos para colar no Notion (Briefing, Devlog, Portal)
-├── public/
-│   ├── favicon.svg              # Símbolo oficial 10Ativas
-│   ├── icon.svg                 # Símbolo oficial 10Ativas
-│   └── brand/                   # SVGs, PNGs e 84 ícones vetorizados transparentes
+yt_downloader/
+├── .github/workflows/ci.yml     # Automated Node 22 & Python 3.12 CI pipeline
+├── action.yml                   # Reusable Composite GitHub Action
+├── bin/yt-dl.mjs                # Standalone cross-platform Node.js CLI binary
+├── python/yt_downloader/        # Python SDK & CLI package (yt-downloader-cli)
+│   ├── __init__.py
+│   ├── validator.py             # Python zero-shell URL validator
+│   └── cli.py                   # Python CLI entrypoint (yt-dl-py)
 ├── src/
-│   ├── app/
-│   │   ├── layout.tsx           # Injeção de fontes Sora, Geist Mono, Toaster e Providers
-│   │   ├── page.tsx             # Atmospheric Hero, Input Pill, Media Card e Bento Grid
-│   │   ├── privacy/page.tsx     # Política de Privacidade & Proteção de Dados
-│   │   ├── terms/page.tsx       # Termos de Uso Responsável (Fair Use)
-│   │   └── api/
-│   │       ├── info/route.ts            # Inspeção segura de metadados
-│   │       ├── download/start/route.ts  # Inicialização de job de download
-│   │       ├── download/status/route.ts # Polling de status com % e ETA
-│   │       ├── download/file/route.ts   # Stream de entrega e purga do arquivo
-│   │       └── session/purge/route.ts   # Endpoint de descarte no beforeunload
-│   ├── components/
-│   │   ├── brand/               # AnimatedLogoReveal, BrandHeader, BrandFooter
-│   │   ├── studio/              # UrlInputPill, MediaCard, DownloadProgressModal
-│   │   ├── session/             # SessionProvider (beforeunload/sessionStorage)
-│   │   └── ui/                  # CookieBanner
+│   ├── index.ts                 # Main TypeScript SDK programmatic entrypoint
+│   ├── cli/                     # TypeScript CLI parser and runner
+│   ├── app/                     # Next.js 15 App Router UI & REST API routes
+│   ├── components/              # 10ATIVAS V2 React 19 UI components
 │   └── lib/
-│       ├── jobs/                # Gerenciador de jobs de download com yt-dlp
-│       ├── security/            # Validador de URL e Rate Limiting
-│       ├── session/             # Gerenciador de sessão efêmera
-│       ├── supabase/            # Cliente Supabase com storage volátil
-│       └── utils.ts             # Formatadores (bytes, duration, speed)
-└── tests/
-    └── validator.test.ts        # Testes de segurança e anti-injection
+│       ├── jobs/                # Non-blocking yt-dlp subprocess manager
+│       ├── security/            # URL sanitizer (CWE-78/88) & Token-Bucket Rate Limiter
+│       ├── session/             # Ephemeral sessionStorage lifecycle
+│       └── supabase/            # Volatile Supabase client integration
+├── tests/
+│   ├── validator.test.ts        # Vitest security & anti-injection test suite
+│   ├── cli.test.ts              # Vitest CLI & rate-limiter unit tests
+│   └── test_python_validator.py # Python unittest security suite
+├── Dockerfile                   # Multi-stage Node 22 + Python 3 + FFmpeg production image
+├── docker-compose.yml           # One-command container orchestration
+├── pyproject.toml               # PEP 621 Python package configuration
+├── package.json                 # npm SDK, CLI & Next.js configuration
+├── LICENSE                      # MIT License
+├── SECURITY.md                  # Vulnerability disclosure & CWE mitigation policy
+├── CONTRIBUTING.md              # Developer contribution guide
+└── CHANGELOG.md                 # Semantic versioning history
 ```
 
 ---
 
-## 📄 Termo de Uso e Responsabilidade
-Este software deve ser utilizado exclusivamente para download de conteúdos de autoria própria, sob licença Creative Commons ou com expressa permissão do titular dos direitos.
+## 🛡️ Security & Open-Source Governance
+
+- **License:** Distributed under the [MIT License](LICENSE).
+- **Security Policy:** See [SECURITY.md](SECURITY.md) for CWE-78/CWE-88 mitigation architecture and responsible disclosure.
+- **Contributing:** See [CONTRIBUTING.md](CONTRIBUTING.md) for test suite requirements and PR guidelines.

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { validateYouTubeUrl } from "../src/lib/security/validator";
 
 describe("YouTube URL Security Validator", () => {
@@ -23,7 +23,9 @@ describe("YouTube URL Security Validator", () => {
   });
 
   it("aceita link do YouTube com parâmetros adicionais e playlists (&list=)", () => {
-    const res = validateYouTubeUrl("https://www.youtube.com/watch?v=IBbAn4jUAVM&list=RDIBbAn4jUAVM&start_radio=1");
+    const res = validateYouTubeUrl(
+      "https://www.youtube.com/watch?v=IBbAn4jUAVM&list=RDIBbAn4jUAVM&start_radio=1",
+    );
     expect(res.isValid).toBe(true);
     expect(res.videoId).toBe("IBbAn4jUAVM");
     expect(res.isPlaylist).toBe(true);

@@ -1,0 +1,65 @@
+name: "YouTube Media Extraction & Security Audit"
+description: "Hardened GitHub Action for zero-shell-injection YouTube URL validation, metadata inspection, and MP3/MP4 extraction via yt-dlp."
+author: "Miguel Silva (migu3lls)"
+
+branding:
+  icon: "download-cloud"
+  color: "green"
+
+inputs:
+  url:
+    description: "YouTube video, Shorts, or playlist URL to validate and extract"
+    required: true
+  format:
+    description: "Target container format (mp3 or mp4)"
+    required: false
+    default: "mp4"
+  quality:
+    description: "Resolution tier (2160p, 1080p, 720p, 480p, best)"
+    required: false
+    default: "1080p"
+  output-dir:
+    description: "Output directory for downloaded media artifacts"
+    required: false
+    default: "./downloads"
+  info-only:
+    description: "Set to 'true' to only run URL sanitization and metadata inspection without downloading"
+    required: false
+    default: "false"
+
+outputs:
+  clean-url:
+    description: "Canonical sanitized YouTube URL"
+    value: ${{ steps.extract.outputs.clean_url }}
+  video-id:
+    description: "Extracted 11-character YouTube Video ID"
+    value: ${{ steps.extract.outputs.video_id }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python & yt-dlp
+      shell: bash
+      run: |
+        python3 -m pip install --upgrade pip yt-dlp
+
+    - name: Run Hardened Validator & Extractor
+      id: extract
+      shell: bash
+      env:
+        INPUT_URL: ${{ inputs.url }}
+        INPUT_FORMAT: ${{ inputs.format }}
+        INPUT_QUALITY: ${{ inputs.quality }}
+        INPUT_OUTPUT: ${{ inputs.output-dir }}
+        INPUT_INFO_ONLY: ${{ inputs.info-only }}
+      run: |
+        ARGS=("$INPUT_URL" "--format" "$INPUT_FORMAT" "--quality" "$INPUT_QUALITY" "--output" "$INPUT_OUTPUT" "--json")
+        if [ "$INPUT_INFO_ONLY" = "true" ]; then
+          ARGS+=("--info")
+        fi
+        RESULT=$(PYTHONPATH="${{ github.action_path }}/python" python3 -m yt_downloader.cli "${ARGS[@]}")
+        echo "$RESULT"
+        CLEAN_URL=$(echo "$RESULT" | python3 -c "import sys, json; data=json.load(sys.stdin); print(data.get('clean_url', ''))")
+        VIDEO_ID=$(echo "$RESULT" | python3 -c "import sys, json; data=json.load(sys.stdin); print(data.get('video_id', ''))")
+        echo "clean_url=$CLEAN_URL" >> "$GITHUB_OUTPUT"
+        echo "video_id=$VIDEO_ID" >> "$GITHUB_OUTPUT"

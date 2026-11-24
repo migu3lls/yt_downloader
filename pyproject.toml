@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yt-downloader-cli"
+version = "1.1.0"
+description = "Hardened Python CLI & Developer SDK for zero-shell-injection YouTube media extraction via yt-dlp and FFmpeg"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [
+  { name = "Miguel Silva", email = "miguelldsilva@outlook.com" }
+]
+keywords = [
+  "youtube",
+  "yt-dlp",
+  "ffmpeg",
+  "cli",
+  "sdk",
+  "security",
+  "media-extraction",
+  "developer-tools"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio :: Conversion",
+  "Topic :: Multimedia :: Video :: Conversion",
+  "Topic :: Security",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+  "yt-dlp>=2024.10.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/migu3lls/yt_downloader"
+Repository = "https://github.com/migu3lls/yt_downloader.git"
+Issues = "https://github.com/migu3lls/yt_downloader/issues"
+Changelog = "https://github.com/migu3lls/yt_downloader/blob/main/CHANGELOG.md"
+
+[project.scripts]
+yt-dl-py = "yt_downloader.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["python"]

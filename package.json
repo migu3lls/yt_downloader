@@ -1,15 +1,64 @@
 {
-  "name": "10ativas-media-studio",
-  "version": "1.0.0",
-  "private": true,
-  "description": "YouTube Media Studio & Converter sob o Design System 10ATIVAS V2 e Supabase BaaS",
+  "name": "yt-downloader-sdk",
+  "version": "1.1.0",
+  "private": false,
+  "license": "MIT",
+  "author": "Miguel Silva <miguelldsilva@outlook.com> (https://github.com/migu3lls)",
+  "description": "Hardened TypeScript SDK, CLI & Next.js 15 Reference Architecture for zero-shell-injection YouTube media extraction with yt-dlp, FFmpeg and Supabase.",
+  "homepage": "https://github.com/migu3lls/yt_downloader#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/migu3lls/yt_downloader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/migu3lls/yt_downloader/issues"
+  },
+  "keywords": [
+    "youtube-downloader",
+    "yt-dlp",
+    "ffmpeg",
+    "cli",
+    "sdk",
+    "typescript",
+    "nextjs",
+    "supabase",
+    "security",
+    "command-injection-prevention",
+    "media-pipeline",
+    "developer-tools"
+  ],
+  "bin": {
+    "yt-dl": "./bin/yt-dl.mjs",
+    "yt-downloader": "./bin/yt-dl.mjs"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./security": "./src/lib/security/validator.ts",
+    "./rate-limit": "./src/lib/security/rateLimit.ts",
+    "./jobs": "./src/lib/jobs/downloadManager.ts",
+    "./cli": "./src/cli/index.ts"
+  },
+  "files": [
+    "bin/",
+    "src/index.ts",
+    "src/cli/",
+    "src/lib/",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "clean": "node -e \"require('fs').rmSync('.next', { recursive: true, force: true })\"",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check src/",
-    "format": "biome format --write src/",
+    "cli": "node ./bin/yt-dl.mjs",
+    "lint": "biome check src/ tests/",
+    "format": "biome format --write src/ tests/",
     "test": "vitest run"
   },
   "dependencies": {
